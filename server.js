@@ -1,6 +1,7 @@
 const express= require('express')
 const cors = require('cors')
 const studentsRoute  = require('./services/students')
+const productsRoute = require('./services/products')
 const connection = require("./db")
 var Request = require('tedious').Request
 const server = express()
@@ -10,15 +11,7 @@ server.use(express.json())
 
 server.use("/students", cors(), studentsRoute)
 
-server.use('/test',(req,res) =>{
-
-    var selectStudents = 'SELECT * FROM STUDENTS'
-    var request = new Request(selectStudents ,(err , rowCount, rows)=>{
-       if(err)console.log(err)
-       else console.log(rowCount) 
-    })
-    connection.execSql(request)
-})
+server.use('/products' , cors(), productsRoute)
 
 
 server.listen(server.get('port'), () => {
