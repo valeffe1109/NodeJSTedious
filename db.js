@@ -23,4 +23,8 @@ connection.on('connect', err =>{
   else console.log("connected")
 })
 
+var reset=()=>{
+    connection = new Connection(config)
+}
+
 module.exports = connection;

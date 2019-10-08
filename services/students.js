@@ -4,6 +4,15 @@ const connection = require('../db')
 const Types = require("tedious").TYPES
 const fs = require("fs-extra")
 const router = express.Router()
+const {reset} = require('../db')
+
+
+router.get('/reset' , async (req,res) => {
+       
+     reset()
+})
+
+
 
 
 router.get("/", async (req, res) => {
