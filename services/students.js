@@ -62,7 +62,7 @@ router.get("/:id", async (req, res) => {
 })
 
 router.get('/:id/Projects', async (req, res) => {
-  var selectProject = 'SELECT * FROM PROJECTS WHERE StudentsID = @StudentsID'
+  var selectProject = 'SELECT * FROM PROJECTS WHERE StudentID = @StudentID'
   var request = new Request(selectProject, (err, rowCount, rows) => {
     if (err) res.send(err)
     else {
@@ -78,7 +78,7 @@ router.get('/:id/Projects', async (req, res) => {
       project[column.metadata.colName.toLowerCase()] = column.value
     })
   })
-  request.addParameter('StudentsID', Tupes.NVarChar, req.params.id)
+  request.addParameter('StudentID', Types.NVarChar, req.params.id)
   connection.execSql(request);
 })
 
