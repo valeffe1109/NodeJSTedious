@@ -84,8 +84,8 @@ router.get('/:id/Projects', async (req, res) => {
 
 
 router.post("/", async (req, res) => {
-  var selectStudents = `INSERT INTO STUDENTS (Name, Surname, Email)
-                       VALUES ('${req.body.Name}', '${req.body.Surname}', '${req.body.Email}')`
+  var selectStudents = `INSERT INTO STUDENTS (Name, Surname, Email,Image)
+                       VALUES ('${req.body.Name}', '${req.body.Surname}', '${req.body.Email}','${req.body.Image}')`
 
   var request = new Request(selectStudents, (err) => {
     if (err) res.send(err)
